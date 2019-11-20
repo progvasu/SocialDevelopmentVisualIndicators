@@ -1,0 +1,33 @@
+/* MAIN INDEX.HTML */
+#top-heading {
+    padding-top: 15px;
+}
+
+#top-nav-bar {
+    padding: 30px 0px;
+}
+
+.nav-item {
+    font-size: 20px;
+}
+
+.data_heading {
+    font-size: 30px;
+}
+
+.plot_heading {
+    padding: 20px 0px 0px 0px;
+    font-size: 30px;
+}
+
+.plot_figure_heading {
+    display: table;
+    height: 700;
+}
+
+.plot_figure_heading span {
+  vertical-align: middle;
+  display: table-cell;
+  font-size: 20px;
+  text-align: center;
+}
