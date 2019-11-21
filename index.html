@@ -11,7 +11,15 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         
         <script src="https://d3js.org/d3.v4.min.js"></script>
-    </head>
+        
+        <!-- World population changes -->
+        <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+        <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+        <script src="//d3js.org/topojson.v2.min.js"></script>
+        <script src="https://unpkg.com/d3-simple-slider"></script>
+        <!-- end of changes -->
+
+      </head>
 
     <body>
         <div class="container-fluid">
@@ -53,9 +61,20 @@
                 <div class="tab-pane face in active" id="general">
 					<div class="row">
 						<div class="col data_heading">
-							General Statistics
+              General Statistics
 						</div>
-					</div>
+          </div>
+          
+          <div class="row">
+						<div class="col">
+              <h2>1. World Population</h2>
+              <div id="slider-step"></div>
+              <svg id="world"></svg>
+						</div>
+          </div>
+          <script src="./plots/world_population.js"></script>
+
+
                 </div>
 
                 <div class="tab-pane fade" id="education">

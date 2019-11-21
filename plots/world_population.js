@@ -5,8 +5,8 @@ function world_map() {
   svg = d3.select("#world");
   // svg.selectAll("*").remove();
 
-  width = svg.node().getBoundingClientRect().width;
-  height = svg.node().getBoundingClientRect().height;
+  width = document.body.clientWidth;
+height = document.body.clientHeight;
 
   zoomable_layer = svg.append('g');
 
@@ -70,22 +70,24 @@ update(val);
 });
 
 var gStep = d3
-.select('div#slider-step')
+.select('#slider-step')
 .append('svg')
-.attr('width', 500)
-.attr('height', 50)
+.attr('width', 1300)
+.attr('height', 100)
 .append('g')
-.attr('transform', 'translate(30,30)');
+.attr('transform', 'translate(60,30)');
 
 gStep.call(sliderStep);
 
-update(1995);
+update(2000);
   function update(year) {
 
     // console.log(year);
     // clear
     d3.select('#world').html("");
-    svg = d3.select("#world");
+    svg = d3.select("#world")
+    .attr('width', "100%")
+.attr('height', 800);
     zoomable_layer = svg.append('g');
 
   zoom = d3.zoom().scaleExtent([-Infinity, Infinity]).on('zoom', function() {
@@ -100,7 +102,7 @@ update(1995);
 
   svg.call(zoom);
 
-  projection = d3.geoWinkel3().rotate([0, 0]).center([0, 0]).scale((width - 400) / (2 * Math.PI)).translate([width / 2, height / 2]);
+  projection = d3.geoWinkel3().rotate([0, 0]).center([0, 0]).scale((width - 250) / (2 * Math.PI)).translate([width / 2, 600 / 2]);
 
   path = d3.geoPath(projection);
 
