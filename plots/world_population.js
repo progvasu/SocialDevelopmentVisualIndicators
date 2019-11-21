@@ -59,7 +59,7 @@ var sliderStep = d3
 .sliderBottom()
 .min(d3.min(years))
 .max(d3.max(years))
-.width(1200)
+.width(document.body.clientWidth-160)
 .ticks(18)
 .tickFormat(d3.format('d'))
 .step(1)
@@ -72,7 +72,7 @@ update(val);
 var gStep = d3
 .select('#slider-step')
 .append('svg')
-.attr('width', 1300)
+.attr('width', "100%")
 .attr('height', 100)
 .append('g')
 .attr('transform', 'translate(60,30)');
@@ -213,8 +213,6 @@ update(2000);
           });
         }
       })
-      //  console.log(population_data[0].country);
-        console.log(population_data[0].value);
 
       radius.domain([
         0, d3.max(population_data, function(d) {

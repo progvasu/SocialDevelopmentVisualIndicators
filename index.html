@@ -12,13 +12,17 @@
         
         <script src="https://d3js.org/d3.v4.min.js"></script>
         
-        <!-- World population changes -->
+        <!-- world population changes -->
         <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
         <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
         <script src="//d3js.org/topojson.v2.min.js"></script>
         <script src="https://unpkg.com/d3-simple-slider"></script>
         <!-- end of changes -->
 
+        <!-- cartogram - gdp plot -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.js"></script>
+        <script src="//unpkg.com/cartogram-chart@1"></script>
+        <script src="//unpkg.com/d3-scale-chromatic"></script>
       </head>
 
     <body>
@@ -61,20 +65,17 @@
                 <div class="tab-pane face in active" id="general">
 					<div class="row">
 						<div class="col data_heading">
-              General Statistics
+                            General Statistics
 						</div>
-          </div>
-          
-          <div class="row">
+                    </div>
+                    <div class="row">
 						<div class="col">
-              <h2>1. World Population</h2>
-              <div id="slider-step"></div>
-              <svg id="world"></svg>
+                            <h2>1. World Population</h2>
+                            <div id="slider-step"></div>
+                            <svg id="world"></svg>
 						</div>
-          </div>
-          <script src="./plots/world_population.js"></script>
-
-
+                    </div>
+                    <script src="./plots/world_population.js"></script>
                 </div>
 
                 <div class="tab-pane fade" id="education">
@@ -99,6 +100,13 @@
                             Economy Statistics
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div id="slider-step-gdp"></div>
+                            <div id="world-cart"></div>
+                        </div>
+                    </div>
+                    <script src="./plots/cartogram_gdp.js"></script>
                 </div>
 
                 <div class="tab-pane fade" id="health">
