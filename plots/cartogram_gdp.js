@@ -1,22 +1,8 @@
-<head>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.js"></script>
-        <script src="https://unpkg.com/d3-simple-slider"></script>
-        <script src="//unpkg.com/cartogram-chart@1"></script>
-        <script src="//unpkg.com/d3-scale-chromatic"></script>
-    
-    </head>
-    
-    <body>
-        <div id="slider-step"></div>
-        <div id="world-cart"></div>
-    
-    <script>
-        const cartogram = Cartogram()
+const cartogram = Cartogram()
             .valFormatter(d3.format('$,.0f'))
             (document.getElementById('world-cart'));
     
-        d3.json('../data/world_topology_final.json', (error, world) => {
+        d3.json('./data/world_topology_final.json', (error, world) => {
             if (error) throw error;
     
             var low = 2000;
@@ -38,7 +24,7 @@
                 });
 
             var gStep = d3
-                .select('div#slider-step')
+                .select('div#slider-step-gdp')
                 .append('svg')
                 .attr('width', "100%")
                 .attr('height', 80)
@@ -84,5 +70,3 @@
                 cartogram.iterations(40);
             }
         });
-    </script>
-    </body>
