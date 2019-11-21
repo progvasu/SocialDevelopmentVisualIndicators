@@ -1,39 +1,88 @@
 <head>
-    <script src="//unpkg.com/cartogram-chart"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-</head>
-
-<body>
-    <div id="world"></div>
-
+        <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.js"></script>
+        <script src="https://unpkg.com/d3-simple-slider"></script>
+        <script src="//unpkg.com/cartogram-chart@1"></script>
+        <script src="//unpkg.com/d3-scale-chromatic"></script>
+    
+    </head>
+    
+    <body>
+        <div id="slider-step"></div>
+        <div id="world-cart"></div>
+    
     <script>
-        // reading topology and gdp data
-        d3.json('./ne_110m_admin_0_countries.json', (error, world) => {
+        const cartogram = Cartogram()
+            .valFormatter(d3.format('$,.0f'))
+            (document.getElementById('world-cart'));
+    
+        d3.json('../data/world_topology_final.json', (error, world) => {
             if (error) throw error;
-            
+    
+            var low = 2000;
+            years = []
+            for(var i = 0;i <= 2018-2000;i++) {
+                years.push(low+i);
+            }
+ 
+            var sliderStep = d3
+                .sliderBottom()
+                .min(d3.min(years))
+                .max(d3.max(years))
+                .width(document.body.clientWidth-75)
+                .ticks(18)
+                .tickFormat(d3.format('d'))
+                .step(1)
+                .on('onchange', val => {
+                    genVals(val);
+                });
+
+            var gStep = d3
+                .select('div#slider-step')
+                .append('svg')
+                .attr('width', "100%")
+                .attr('height', 80)
+                .append('g')
+                .attr('transform', 'translate(30,30)');
+ 
+            gStep.call(sliderStep);
+
             // exclude antarctica
             world.objects.countries.geometries.splice(
                 world.objects.countries.geometries.findIndex(d => d.properties.ISO_A2 === 'AQ'),
                 1
             );
-            
+
             const colorScale = d3.scaleSequential(d3.interpolatePlasma)
-                .domain([0, Math.max(...world.objects.countries.geometries.map(getGDPPerCapita))]);
-            
-            Cartogram()
+                .domain([1000, 1000000]);
+    
+            let ccData;
+    
+            cartogram
                 .topoJson(world)
                 .topoObjectName('countries')
-                .value(getGDPPerCapita)
-                .color(f => colorScale(getGDPPerCapita(f)))
-                .label(({ properties: p }) => `GDP of ${p.NAME} (${p.ISO_A2})`)
-                .units(' per capita')
-                .valFormatter(d3.format('$,.0f'))
-                .iterations(3)
-                (document.getElementById('world'));
-            //
-            function getGDPPerCapita({ properties: p }) {
-                return p.GDP_MD_EST * 1e6 / p.POP_EST;
+                .value(({ properties: { ISO_A2 } }) => ccData[ISO_A2])
+                .color(({ properties: { ISO_A2 } }) => colorScale(ccData[ISO_A2]))
+                .label(({ properties: p }) => `${p.NAME} (${p.ISO_A2})`)
+                .units(' million')
+                .onClick(d => console.info(d));
+    
+            genVals(2000);
+    
+            function genVals(year) {
+                ccData = Object
+                    .assign(...world.objects.countries.geometries
+                    .map(({ properties: { ISO_A2,GDP_MD_EST } }) => {
+                            var val2 = GDP_MD_EST[year-2000] / 1000000;
+                            if (val2 == 0) val2 = 1000
+                            return ({ [ISO_A2]: val2 })
+                        }));
+                render();
+            }
+
+            function render() {
+                cartogram.iterations(40);
             }
         });
     </script>
-</body>
+    </body>
