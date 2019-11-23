@@ -15,7 +15,7 @@ const cartogram = Cartogram()
                 .sliderBottom()
                 .min(d3.min(years))
                 .max(d3.max(years))
-                .width(document.body.clientWidth-75)
+                .width(document.body.clientWidth-150)
                 .ticks(18)
                 .tickFormat(d3.format('d'))
                 .step(1)
@@ -29,7 +29,7 @@ const cartogram = Cartogram()
                 .attr('width', "100%")
                 .attr('height', 80)
                 .append('g')
-                .attr('transform', 'translate(30,30)');
+                .attr('transform', 'translate(60,30)');
  
             gStep.call(sliderStep);
 
@@ -40,13 +40,14 @@ const cartogram = Cartogram()
             );
 
             const colorScale = d3.scaleSequential(d3.interpolatePlasma)
-                .domain([1000, 1000000]);
+                .domain([1000, 3000000]);
     
             let ccData;
     
             cartogram
                 .topoJson(world)
                 .topoObjectName('countries')
+                .width("100%")
                 .value(({ properties: { ISO_A2 } }) => ccData[ISO_A2])
                 .color(({ properties: { ISO_A2 } }) => colorScale(ccData[ISO_A2]))
                 .label(({ properties: p }) => `${p.NAME} (${p.ISO_A2})`)
