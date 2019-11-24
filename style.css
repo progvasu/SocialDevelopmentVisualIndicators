@@ -94,3 +94,10 @@
     fill: none;
     stroke-width: 1.5px;
 }
+
+/* RADAR PLOT - Employment Scenarios */
+.radarChart2 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  text-align: center;
+}
