@@ -179,7 +179,7 @@ var timerCircle = slidersvg.append("circle")
 		.attr("class", "group");
 
 	group.append("circle")
-		.attr("class", function(d) { return d.region; })
+		.attr("class", "co2_circle")
 		.classed("scatter", true)
 		.attr("id", function(d) { return d.country; })
 		.attr("r", function(d) { return 20*(Math.pow((d.co21980/1000000/3.14),0.5));})
@@ -187,7 +187,7 @@ var timerCircle = slidersvg.append("circle")
 		.attr("cy", function(d) { return y(d.logco2pc1980); });
 
 	var legend = svg.append("g")
-		.attr("class", "legend")
+		.attr("class", "legend1")
 		.attr("transform", "translate(" + (width - 50) + "," + (height - 20) + ")")
 		.selectAll("g")
 		.data([1e6, 5e6, 1e7])

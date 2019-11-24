@@ -137,14 +137,6 @@
   text-align: left;
 }
 
-#header h1 {
-  margin: 0px 0px 0px 10px;
-  padding: 4px 0px 0px 7px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
-  font-weight: normal;
-  color: #fff;
-}
 
 .axis line {
   stroke: #eee;
@@ -207,15 +199,12 @@
   fill: #772210;
 }
 
-circle {
+.co2_circle {
   fill: #00a1ce;
   stroke: #fff;
   stroke-width: 1.5;
 }
 
-rect {
-  fill: #ccc;
-}
 
 #year {
   font-family: Arial, sans-serif;
@@ -224,16 +213,17 @@ rect {
   font-weight: bold;
 }
 
-.legend circle {
+.legend1 circle {
   fill: none;
   stroke: #ccc;
   stroke-width: 1;
 }
-.legend text {
+.legend1 text {
   fill: #747474;
   font: 10px Arial, sans-serif;
   text-anchor: middle;
   /* end */
+}
 
 /* LINE PLOT - LITERACY */
 #line_plot_lit {
@@ -250,4 +240,23 @@ rect {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px;
   text-align: center;
+}
+
+/* Enrollment Plot */
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis--y path {
+  display: none;
+}
+
+.bar {
+  fill: #3182bd;
+  fill-opacity: .9;
+}
+
+.wld {
+  fill: #9ecae1;
 }

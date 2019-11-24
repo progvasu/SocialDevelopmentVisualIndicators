@@ -64,23 +64,6 @@
             <div class="tab-content">
                 <div class="tab-pane face in active" id="general">
 					<div class="row">
-<<<<<<< HEAD
-						<div class="col data_heading">
-              General Statistics
-						</div>
-                    </div>
-          
-                <div class="row">
-                        <div class="col">
-                            <h2>1. World Population</h2>
-                            <div id="slider-step"></div>
-                            <svg id="world"></svg>
-                        </div>
-                </div>
-          <script src="./plots/world_population.js"></script>
-
-
-=======
 						<div class="col data_heading">General Statistics</div>
                     </div>
                     <div class="row">
@@ -93,7 +76,6 @@
 						</div>
                     </div>
                     <script src="./plots/world_population.js"></script>
->>>>>>> origin/master
                 </div>
 
                 <div class="tab-pane fade" id="education">
@@ -107,6 +89,13 @@
                         <div class="col" style="margin-top: 20px;"><div id="bodyLiteracy"></div></div>
                     </div>
                     <script src="./plots/lineplot_literacy.js"></script>
+                    <div class="row">
+                        <div class="col plot_heading">2. Adjusted net enrolment rate, primary, female (%) <span class="year"></span> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-top: 20px;"><div class="enrollment-chart"></div></div>
+                    </div>
+                    <script src ="./plots/enrollment.js"></script>
                 </div>
                 
                 <div class="tab-pane fade" id="environment">
@@ -114,17 +103,18 @@
                         <div class="col data_heading">Environment Statistics</div>
                     </div>
                     <div class="row">
+                        <div class="col plot_heading">1. CO<sub>2</sub> emission, per capita</div>
+                    </div>
+                    <div class="row">
                         <div class="col">
-                            <div id="content">
-                                <div id="header">
-                                    <div id="block"></div>
-                                    <h1>CO<sub>2</sub> emissions and GDP per capita</h1>
+                            <div id="content"> 
+                                <div id="block"></div>
+                                
+                                <div id="buttons">
+                                    <div class="button" id="play">Play<span class="fa fa-caret-right"></span></div>
+                                    <div id="slider"></div>
+                                    <div id="co2emission"></div>
                                 </div>
-                            <div id="buttons">
-                                <div class="button" id="play">Play<span class="fa fa-caret-right"></span></div>
-                                <div id="slider"></div>
-                                <div id="co2emission"></div>
-                            </div>
                             </div>
                         </div>
                     </div>
