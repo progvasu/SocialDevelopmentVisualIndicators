@@ -34,11 +34,11 @@
 
 /* world_population css */
 
-body, html {
+/* body, html {
     padding: 0;
     margin: 0;
     height: 100%;
-  }
+  } */
   
   #world{
     text-align: center;
@@ -72,7 +72,7 @@ body, html {
     vector-effect: non-scaling-stroke;
   }
   
-  .label {
+   .label {
     font-family: sans-serif;
     font-size: 10px;
     pointer-events: none;
@@ -93,6 +93,156 @@ body, html {
   }
   .bubble:hover {
     fill-opacity: 0.4;
-  }
+  } 
 
   /* end */
+
+  /* Health-Wealth-Poipulation chart css */
+
+  #health-wealth-population {
+    margin-left: -40px;
+    height: 506px;
+  }
+  
+  text {
+    font: 10px sans-serif;
+  }
+  
+  .dot {
+    stroke: #000;
+  }
+  
+  .axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  
+  .label1 {
+    fill: #777;
+  }
+  
+  .year.label1 {
+    font: 500 196px "Helvetica Neue";
+    fill: #ddd;
+  }
+  
+  .year.label1.active {
+    fill: #aaa;
+  }
+  
+  .overlay {
+    fill: none;
+    pointer-events: all;
+    cursor: ew-resize;
+  }
+  
+  /* End */
+
+  /* CSS for CO2 Emission plot */
+
+  
+#content {
+  margin: 5px;
+  padding: 0px 0px 150px 0px;
+  width: 575px;
+  text-align: left;
+}
+
+#header h1 {
+  margin: 0px 0px 0px 10px;
+  padding: 4px 0px 0px 7px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: #fff;
+}
+
+.axis line {
+  stroke: #eee;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+#buttons, #countrybuttons {
+  margin: 0px 0px 0px 5px;
+  padding: 0px;
+}
+
+.button {
+  display: inline-block;
+  margin: 0px 0px 3px 0px;
+  padding: 4px 6px;
+  line-height: 20px;
+  background:#ff0000;
+  min-width: 70px;
+  border-radius: 3px;
+  text-align: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background:#e3120b;
+  color: #fff;
+  cursor: pointer;
+}
+.button span {
+  margin: 0px;
+  padding: 0px 3px;
+}
+#play {
+  float: left;
+}
+.regLine {
+  fill: none;
+  stroke: #00a1ce;
+  stroke-width: 2.5;
+  opacity: 0;
+}
+#header {
+  margin: 0px;
+  padding: 0px;
+  height: 34px;
+  background: #747474;
+}
+
+.left.label {
+  font-size: 12px;
+  fill: #4a4a4a;
+}
+.right.label {
+  font-size: 12px;
+  fill: #772210;
+}
+
+circle {
+  fill: #00a1ce;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+rect {
+  fill: #ccc;
+}
+
+#year {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #4a4a4a;
+  font-weight: bold;
+}
+
+.legend circle {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1;
+}
+.legend text {
+  fill: #747474;
+  font: 10px Arial, sans-serif;
+  text-anchor: middle;
+}
