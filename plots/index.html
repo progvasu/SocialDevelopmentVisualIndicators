@@ -23,8 +23,16 @@
 
     <script>
 
-        var noOfCharts; 
-        var dataLength;
+function parseTimeJoy(offset) {
+            var date = new Date(1990, 0, 1); // chose an arbitrary day
+            return d3.timeYear.offset(date, offset-1990);
+        }
+
+        d3.tsv('../data/joyplot_test.tsv', row, function (error, dataFlat) {
+            if (error) throw error;
+
+            var noOfCharts; 
+            var dataLength;
 				var xTickValues = []
 
         let colour = d3.scaleSequential(d3.interpolateInferno)
@@ -116,11 +124,6 @@
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .attr("class", "charts");
 
-        d3.tsv('../data/joyplot_test.tsv', row, function (error, dataFlat) {
-            if (error) throw error;
-
-            console.log(dataFlat)
-
             // Sort by time
             dataFlat.sort(function (a, b) { return a.time - b.time; });
 
@@ -197,21 +200,7 @@
 
             })
 
-
-        })
-
-        function row(d) {
-            return {
-                activity: d.activity,
-                time: parseTime(d.time),
-                value: +d.p_smooth
-            };
-        };
-
-        function parseTime(offset) {
-            var date = new Date(1990, 0, 1); // chose an arbitrary day
-            return d3.timeYear.offset(date, offset-1990);
-        }
+   
 
         function areaOffsetX(i) {
             return i * (zWidth / (noOfCharts - 1))
@@ -273,5 +262,15 @@
                 .attr("x", adjacentCos(zAngle, tickText))
                 .attr("y", oppositeSin(zAngle, tickText));
         };
+        });
+
+        function row(d) {
+            return {
+                activity: d.activity,
+                time: parseTimeJoy(d.time),
+                value: +d.p_smooth
+            };
+        };
+        
     </script>
 </body>
