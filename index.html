@@ -23,6 +23,9 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.js"></script>
         <script src="//unpkg.com/cartogram-chart@1"></script>
         <script src="//unpkg.com/d3-scale-chromatic"></script>
+
+        <!-- joy plot -->
+        <script src="./plots/triangleEquations.js"></script>
       </head>
 
     <body>
@@ -154,12 +157,22 @@
                         <div class="col data_heading">Health Statistics</div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col plot_heading">
                             1. Health-Wealth-population
                             <div id="health-wealth-population"></div>
                         </div>
                     </div>
                     <script src = "./plots/health-wealth-population.js"></script>
+
+                    <div class="row">
+                        <div class="col plot_heading">2. Age Dependency Ratio</div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="text-align: center;">
+                            <div id="joy"></div>
+                        </div>
+                    </div>
+                    <script src = "./plots/joy_plot.js"></script>
                 </div>
             </div>
         </div>

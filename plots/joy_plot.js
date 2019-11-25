@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-
-<head>
-    <meta charset="utf-8">
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="triangleEquations.js"></script>
-  	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
-    <style>
- 
-
-        g.tick>line {
-            stroke: black;
-            stroke-dasharray: 2, 2;
-        }
-
-        .axis-label, .series-label {
-            fill: black;
-        }
-    </style>
-</head>
-
-<body>
-
-    <script>
-
 function parseTimeJoy(offset) {
             var date = new Date(1990, 0, 1); // chose an arbitrary day
             return d3.timeYear.offset(date, offset-1990);
         }
 
-        d3.tsv('../data/joyplot_test.tsv', row, function (error, dataFlat) {
+        d3.tsv('./data/joyplot_test.tsv', row, function (error, dataFlat) {
             if (error) throw error;
 
             var noOfCharts; 
@@ -94,7 +69,7 @@ function parseTimeJoy(offset) {
                 return yArea(d.value, i);
             });
 
-        let svg = d3.select("body")
+        let svg = d3.select("#joy")
             .append("svg")
             .attr("width", containerWidth + margin.left + margin.right)
             .attr("height", containerHeight + margin.top + margin.bottom);
@@ -240,7 +215,7 @@ function parseTimeJoy(offset) {
                 .data(xTickValues)
                 .enter()
                 .append("g")
-                .attr("class", "tick")
+                .attr("class", "tick2")
                 .attr("transform", function (d) {
                     let x = xWidth * (d);
                     let y = yArea(0, (dataLength * (d)));
@@ -271,6 +246,3 @@ function parseTimeJoy(offset) {
                 value: +d.p_smooth
             };
         };
-        
-    </script>
-</body>
