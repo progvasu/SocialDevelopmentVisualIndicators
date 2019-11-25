@@ -1,9 +1,47 @@
 
 
+function co2emission() {
 
+
+	years = []
+	for(var i = 1980;i <= 2014;i++) {
+	  years.push(i);
+	}
+	
+	var sliderStep1 = d3
+	.sliderBottom()
+	.min(d3.min(years))
+	.max(d3.max(years))
+	.width(document.body.clientWidth-160)
+	.ticks(34)
+	.tickFormat(d3.format('d'))
+	.step(1)
+	.on('onchange', val => {
+	  //console.log(val);
+	  //d3.select('p#value-step').text((val));
+	update(val);
+	});
+	
+	var gStep = d3
+	.select('#steps-slider')
+	.append('svg')
+	.attr('width', "100%")
+	.attr('height', 100)
+	.append('g')
+	.attr('transform', 'translate(60,30)');
+	
+	gStep.call(sliderStep1);
+	
+	update(1980);
+
+
+function update(val) {
 
 d3.csv("./data/co2_gdp.csv", function(error, data) {
 
+	d3.select('#co2emission').html("");
+	d3.select('#slider').html("");
+	
 	
 d3.select("#play").on("click", function(){
 	setup();
@@ -14,7 +52,8 @@ function setup(){
 	d3.select("#play")
 		.html("Play<span class='fa fa-caret-right'></span>")
 		.on('click', null);
-	year = 1980;
+		//change
+	year = val;
 	count = 0;
 	updateScatter();
 	startTimer();
@@ -105,7 +144,8 @@ var selectedCO2pc2;
 
 var selectedClass;
 var duration = 250;
-var year = 1980;
+//change
+var year = val;
 var count = 0;
 var timerWidth = 200;
 var timerHeight = 5;
@@ -138,9 +178,10 @@ var timerCircle = slidersvg.append("circle")
 	selectedGDP2 = "gdppc" + year;
 	selectedCO2pc2 = "co2pc" + year;
 
+
 	data.forEach(function(d) {
-		d.loggdppc1980 = +d.loggdppc1980;
-		d.logco2pc1980 = +d.logco2pc1980;
+		d.selectedGDP = +d.selectedGDP;
+		d.selectedCO2pc = +d.selectedCO2pc;
 	});
 
 	x.domain([5,11.5]);
@@ -165,7 +206,7 @@ var timerCircle = slidersvg.append("circle")
 		.attr("id", "year")
 		.attr("dy", height-20)
 		.attr("dx", width/2-20)
-		.text("1980");
+		.text(val);
 
 	svg.append("text")
 		.attr("class", "left label")
@@ -182,9 +223,9 @@ var timerCircle = slidersvg.append("circle")
 		.attr("class", "co2_circle")
 		.classed("scatter", true)
 		.attr("id", function(d) { return d.country; })
-		.attr("r", function(d) { return 20*(Math.pow((d.co21980/1000000/3.14),0.5));})
-		.attr("cx", function(d) { return x(d.loggdppc1980); })
-		.attr("cy", function(d) { return y(d.logco2pc1980); });
+		.attr("r", function(d, val) { return 20*(Math.pow((d[selectedCO2]/1000000/3.14),0.5));})
+		.attr("cx", function(d, val) { return x(d[selectedGDP]); })
+		.attr("cy", function(d, val) { return y(d[selectedCO2pc]); });
 
 	var legend = svg.append("g")
 		.attr("class", "legend1")
@@ -239,24 +280,24 @@ var timerCircle = slidersvg.append("circle")
 
 
 
-		d3.selectAll("#countrybuttons .button").on("click", function(){
+		// d3.selectAll("#countrybuttons .button").on("click", function(){
 
-			selectedClass = d3.select(this).attr("id");
+		// 	selectedClass = d3.select(this).attr("id");
 
-			if (d3.select(this).classed("selected")) {
-				d3.select(this).classed("selected", false);
+		// 	if (d3.select(this).classed("selected")) {
+		// 		d3.select(this).classed("selected", false);
 
-				d3.selectAll("." + selectedClass)
-					.style("opacity", 0)
-					.style("display", "none");
-			} else {
-				d3.select(this).classed("selected", true);
-				d3.selectAll("." + selectedClass)
-					.style("opacity", 0.6)
-					.style("display", "inline");
-			}
+		// 		d3.selectAll("." + selectedClass)
+		// 			.style("opacity", 0)
+		// 			.style("display", "none");
+		// 	} else {
+		// 		d3.select(this).classed("selected", true);
+		// 		d3.selectAll("." + selectedClass)
+		// 			.style("opacity", 0.6)
+		// 			.style("display", "inline");
+		// 	}
 
-		});
+		// });
 
 
 
@@ -322,5 +363,11 @@ var timerCircle = slidersvg.append("circle")
 
 
 
-
 d3.select(self.frameElement).style("height", "625px");
+
+	}
+
+
+}
+
+co2emission()

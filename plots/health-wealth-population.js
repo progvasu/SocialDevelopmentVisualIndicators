@@ -4,15 +4,15 @@
 // Load the data.
 d3.json("./data/health-wealth.json", function(nations) {
 
-  function x(d) { return d.income; }
+function x(d) { return d.income; }
 function y(d) { return d.lifeExpectancy; }
 function radius(d) { return d.population; }
 //function color(d) { return d.region; }
 function key(d) { return d.name; }
 
 
-  var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
-    width = 960 - margin.right,
+  var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 120},
+    width = document.body.clientWidth - margin.right - margin.left,
     height = 500 - margin.top - margin.bottom;
 
 // Various scales. These domains make assumptions of data, naturally.
@@ -42,10 +42,10 @@ var yAxis = d3.axisLeft()
 
 // Create the SVG container and set the origin.
 var svg = d3.select("#health-wealth-population").append("svg")
-    .attr("width", width + margin.left + margin.right + 300)
+    .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", "translate(" +( margin.left + 100 ) + "," + margin.top + ")");
+    .attr("transform", "translate(" +( margin.left) + "," + margin.top + ")");
 
 // Add the x-axis.
 svg.append("g")
@@ -84,11 +84,10 @@ var label1 = svg.append("text")
     .text(2000);
 
 
-
   // A bisector since many nation's data is sparsely-defined.
   var bisect = d3.bisector(function(d) { return d[0]; });
 
-  // Add a dot per nation. Initialize the data at 1800, and set the colors.
+  // Add a dot per nation. Initialize the data at 2000, and set the colors.
   var dot = svg.append("g")
       .attr("class", "dots")
     .selectAll(".dot")
@@ -107,15 +106,18 @@ var label1 = svg.append("text")
   // Add an overlay for the year label1.
 
   //console.log(label1.node());
+// console.log(label1.node());
+var box1 = label1.node().getBBox();
+// console.log(box1);
+// console.log(box1.width);
 
-  var box = label1.node().getBBox();
 
   var overlay = svg.append("rect")
         .attr("class", "overlay")
-        .attr("x", box.x)
-        .attr("y", box.y)
-        .attr("width", box.width)
-        .attr("height", box.height)
+        .attr("x", box1.x)
+        .attr("y", box1.y)
+        .attr("width", box1.width)
+        .attr("height", box1.height)
         .on("mouseover", enableInteraction);
 
   // Start a transition that interpolates the data based on year.
@@ -141,7 +143,7 @@ var label1 = svg.append("text")
   function enableInteraction() {
     var yearScale = d3.scaleLinear()
         .domain([2000, 2017])
-        .range([box.x + 10, box.x + box.width - 10])
+        .range([box1.x + 10, box1.x + box1.width - 10])
         .clamp(true);
 
     //Cancel the current transition, if any.
