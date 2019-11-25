@@ -11,8 +11,8 @@ function radius(d) { return d.population; }
 function key(d) { return d.name; }
 
 
-  var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5},
-    width = 960 - margin.right,
+  var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 120},
+    width = document.body.clientWidth - margin.right - margin.left,
     height = 500 - margin.top - margin.bottom;
 
 // Various scales. These domains make assumptions of data, naturally.
@@ -42,10 +42,10 @@ var yAxis = d3.axisLeft()
 
 // Create the SVG container and set the origin.
 var svg = d3.select("#health-wealth-population").append("svg")
-    .attr("width", width + margin.left + margin.right + 300)
+    .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", "translate(" +( margin.left + 100 ) + "," + margin.top + ")");
+    .attr("transform", "translate(" +( margin.left) + "," + margin.top + ")");
 
 // Add the x-axis.
 svg.append("g")
