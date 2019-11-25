@@ -85,6 +85,7 @@ update(2000);
     // console.log(year);
     // clear
     d3.select('#world').html("");
+    d3.select('#play').html("");
     svg = d3.select("#world")
     .attr('width', "100%")
 .attr('height', 800);

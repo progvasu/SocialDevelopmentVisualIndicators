@@ -45,7 +45,7 @@
                     <div id="top-nav-bar">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#general" data-target="#general" data-toggle="tab">General</a>
+                                <a class="nav-link" href="#general" data-target="#general" data-toggle="tab">General</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#education" data-target="#education" data-toggle="tab">Education</a>
@@ -57,7 +57,7 @@
                                 <a class="nav-link" href="#economy" data-target="#economy" data-toggle="tab">Economy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#health" data-target="#health" data-toggle="tab">Health</a>
+                                <a class="nav-link active" href="#health" data-target="#health" data-toggle="tab">Health</a>
                             </li>
                         </ul>
                     </div>
@@ -65,7 +65,7 @@
             </div>
             
             <div class="tab-content">
-                <div class="tab-pane face in active" id="general">
+                <div class="tab-pane fade" id="general">
 					<div class="row">
 						<div class="col data_heading">General Statistics</div>
                     </div>
@@ -116,11 +116,11 @@
                     </div>
                     <div class="row">
                         <div class="col" style = "overflow: hidden;">
+                            <div id = "steps-slider"></div>
                             <div id="content"> 
                                 <div id="block"></div>                         
                                 <div id="buttons">
                                     <div class="button" id="play">Play<span class="fa fa-caret-right"></span></div>
-                                    <div id="slider"></div>
                                     <div id="co2emission"></div>
                                 </div>
                             </div>
@@ -157,15 +157,17 @@
                     <script src="./plots/radarChart.js"></script>
                 </div>
 
-                <div class="tab-pane fade" id="health">
+                <div class="tab-pane face in active" id="health">
                     <div class="row">
                         <div class="col data_heading">Health Statistics</div>
                     </div>
                     <div class="row">
                         <div class="col plot_heading">
                             1. Health-Wealth-population
-                            <div id="health-wealth-population"></div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div id="health-wealth-population"></div>
                     </div>
                     <script src = "./plots/health-wealth-population.js"></script>
 
