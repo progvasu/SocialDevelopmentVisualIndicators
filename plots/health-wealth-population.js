@@ -4,7 +4,7 @@
 // Load the data.
 d3.json("./data/health-wealth.json", function(nations) {
 
-  function x(d) { return d.income; }
+function x(d) { return d.income; }
 function y(d) { return d.lifeExpectancy; }
 function radius(d) { return d.population; }
 //function color(d) { return d.region; }
@@ -84,11 +84,10 @@ var label1 = svg.append("text")
     .text(2000);
 
 
-
   // A bisector since many nation's data is sparsely-defined.
   var bisect = d3.bisector(function(d) { return d[0]; });
 
-  // Add a dot per nation. Initialize the data at 1800, and set the colors.
+  // Add a dot per nation. Initialize the data at 2000, and set the colors.
   var dot = svg.append("g")
       .attr("class", "dots")
     .selectAll(".dot")
@@ -107,15 +106,18 @@ var label1 = svg.append("text")
   // Add an overlay for the year label1.
 
   //console.log(label1.node());
+// console.log(label1.node());
+var box1 = label1.node().getBBox();
+// console.log(box1);
+// console.log(box1.width);
 
-  var box = label1.node().getBBox();
 
   var overlay = svg.append("rect")
         .attr("class", "overlay")
-        .attr("x", box.x)
-        .attr("y", box.y)
-        .attr("width", box.width)
-        .attr("height", box.height)
+        .attr("x", box1.x)
+        .attr("y", box1.y)
+        .attr("width", box1.width)
+        .attr("height", box1.height)
         .on("mouseover", enableInteraction);
 
   // Start a transition that interpolates the data based on year.
@@ -141,7 +143,7 @@ var label1 = svg.append("text")
   function enableInteraction() {
     var yearScale = d3.scaleLinear()
         .domain([2000, 2017])
-        .range([box.x + 10, box.x + box.width - 10])
+        .range([box1.x + 10, box1.x + box1.width - 10])
         .clamp(true);
 
     //Cancel the current transition, if any.
