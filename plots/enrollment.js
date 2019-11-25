@@ -1,6 +1,3 @@
- 
-
-
 fetch('./data/enrollment_female.csv')
   .then((res) => res.text())
   .then((res) => {
@@ -113,10 +110,6 @@ const svg = d3.select('.enrollment-chart').append('svg')
   .append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
-
-
-
-
     const data = prepareData(d3.csvParse(res));
     const years = Object.keys(data).map(d => +d);
     const lastYear = years[years.length - 1];
@@ -131,23 +124,84 @@ const svg = d3.select('.enrollment-chart').append('svg')
     drawYAxis(svg, selectedData);
     drawBars(svg, selectedData);
 
-    const interval = d3.interval(() => {
+    var low = 1970;
+            years2 = []
+            for(var i = 0;i <= 2018-1970;i++) {
+                years2.push(low+i);
+            }
+ 
+            var sliderStep = d3
+                .sliderBottom()
+                .min(d3.min(years2))
+                .max(d3.max(years2))
+                .width(document.body.clientWidth-150)
+                .ticks(18)
+                .tickFormat(d3.format('d'))
+                .step(2)
+                .on('onchange', val => {
+                    genVals(val);
+                });
+
+            var gStep = d3
+                .select('div#slider-step-en')
+                .append('svg')
+                .attr('width', "100%")
+                .attr('height', 80)
+                .append('g')
+                .attr('transform', 'translate(60,30)');
+ 
+            gStep.call(sliderStep);
+    
+    function genVals(year) {
       const t = d3.transition().duration(400);
+  
+        selectedData = removeGeoAreasWithNoData(sortData(data[year]));
+  
+        d3.select('.year').text(year);
+  
+        yScale.domain(selectedData.map(yAccessor));
+        drawYAxis(svg, selectedData, t);
+        drawBars(svg, selectedData, t);
+    }
 
-      startYear += 1;
-      selectedData = removeGeoAreasWithNoData(sortData(data[startYear]));
 
-      d3.select('.year').text(startYear);
+    d3.select("#play_enroll").on("click", function(){
+      setup();
+    })
+    .style("background-color", "white");
+    
+    function setup() {
+      // avoid mutiple clicks
+      d3.select("#play_enroll")
+        .html("Playing<span class='fa fa-caret-right'></span>")
+        .on('click', null).style("background-color", "grey");
+    
+      startYear = 1969
+    
+      const interval = d3.interval(() => {
+        const t = d3.transition().duration(400);
+  
+        startYear += 1;
+        selectedData = removeGeoAreasWithNoData(sortData(data[startYear]));
+  
+        d3.select('.year').text(startYear);
+  
+        yScale.domain(selectedData.map(yAccessor));
+        drawYAxis(svg, selectedData, t);
+        drawBars(svg, selectedData, t);
+  
+        if (startYear === lastYear) {
+          // resetting it back to play button
+          d3.select("#play_enroll")
+            .html("Play<span class='fa fa-caret-right'></span>")
+              .on("click", function(){
+                  setup();
+                }).style("background-color", "white");
 
-      yScale.domain(selectedData.map(yAccessor));
-      drawYAxis(svg, selectedData, t);
-      drawBars(svg, selectedData, t);
-
-      if (startYear === lastYear) {
-        // interval.stop();
-        startYear = 1980;
-      }
-    }, 1000);
+          interval.stop();
+        }
+      }, 1000);
+    }
 
 
   });
