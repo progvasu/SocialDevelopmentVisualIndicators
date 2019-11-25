@@ -292,3 +292,11 @@ g.tick2>line {
 .axis-label, .series-label {
   fill: black;
 }
+
+/*  */
+#play_enroll {
+  background-color: white;
+  margin: 20px 0px 0px 60px;
+  color: #000;
+  border: 2px solid black;
+}
