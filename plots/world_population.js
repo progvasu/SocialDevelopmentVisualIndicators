@@ -213,6 +213,8 @@ update(2000);
           });
         }
       })
+      //  console.log(population_data[0].country);
+        //onsole.log(population_data[0].value);
 
       radius.domain([
         0, d3.max(population_data, function(d) {

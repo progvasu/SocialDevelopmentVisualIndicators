@@ -89,12 +89,37 @@
                         <div class="col" style="margin-top: 20px;"><div id="bodyLiteracy"></div></div>
                     </div>
                     <script src="./plots/lineplot_literacy.js"></script>
+                    <div class="row">
+                        <div class="col plot_heading">2. Adjusted net enrolment rate, primary, female (%) <span class="year"></span> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-top: 20px;"><div class="enrollment-chart"></div></div>
+                    </div>
+                    <script src ="./plots/enrollment.js"></script>
                 </div>
                 
                 <div class="tab-pane fade" id="environment">
                     <div class="row">
                         <div class="col data_heading">Environment Statistics</div>
                     </div>
+                    <div class="row">
+                        <div class="col plot_heading">1. CO<sub>2</sub> emission, per capita</div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style = "overflow: hidden;">
+                            <div id="content"> 
+                                <div id="block"></div>
+                                
+                                <div id="buttons">
+                                    <div class="button" id="play">Play<span class="fa fa-caret-right"></span></div>
+                                    <div id="slider"></div>
+                                    <div id="co2emission"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src = "./plots/co2emission.js"></script>
+                    
                 </div>
 
                 <div class="tab-pane fade" id="economy">
@@ -128,6 +153,13 @@
                     <div class="row">
                         <div class="col data_heading">Health Statistics</div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            1. Health-Wealth-population
+                            <div id="health-wealth-population"></div>
+                        </div>
+                    </div>
+                    <script src = "./plots/health-wealth-population.js"></script>
                 </div>
             </div>
         </div>
