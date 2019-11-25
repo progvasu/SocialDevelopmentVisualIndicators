@@ -144,7 +144,8 @@ const svg = d3.select('.enrollment-chart').append('svg')
       drawBars(svg, selectedData, t);
 
       if (startYear === lastYear) {
-        interval.stop();
+        // interval.stop();
+        startYear = 1980;
       }
     }, 1000);
 

@@ -58,7 +58,7 @@ function updateKnob() {
 
 
 	var margin = {top: 35, right: 45, bottom: 40, left: 25},
-    width = 565 - margin.left - margin.right,
+    width = document.body.clientWidth - margin.left - margin.right,
     height = 460 - margin.top - margin.bottom;
 
 var parseYear = d3.timeFormat("%Y").parse,

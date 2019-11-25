@@ -129,6 +129,28 @@
 
   /* CSS for CO2 Emission plot */
 
+  div.tooltip {
+    position: absolute;
+    pointer-events: none;
+    margin: 0px;
+    padding: 7px;
+    width: 255px;
+    height: 90px;
+    background: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    opacity: 0;
+  }
+  
+  div.tooltip p {
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.2rem;
+    color: #4a4a4a;
+    text-align: left;
+  }
   
 #content {
   margin: 5px;
