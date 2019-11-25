@@ -282,3 +282,13 @@
 .wld {
   fill: #9ecae1;
 }
+
+/* JOYPLOT - STYLING */
+g.tick2>line {
+  stroke: black;
+  stroke-dasharray: 2, 2;
+}
+
+.axis-label, .series-label {
+  fill: black;
+}
