@@ -66,11 +66,44 @@
             
             <div class="tab-content">
                 <div class="tab-pane fade" id="general">
-					<div class="row">
-						<div class="col data_heading">General Statistics</div>
+                    <div class="row">
+                        <div class="col">
+                            <b style="font-size: 20px">Social indicators</b> are defined as statistical measures that describe social trends and conditions impacting on human well-being. Generally, social indicators perform one or more of three functions:
+                            <ul style="margin-top: 10px;">
+                                <li>Providing information for decision-making</li>
+                                <li>Monitoring and evaluating policies</li>
+                                <li>And/or searching for a common good and deciding how to reach it</li>
+                            </ul>
+                            <div style="margin-bottom: 0px; "><b style="font-size: 20px">Examples of Social Indicators</b></div>
+                            Examples of social indicators cover the full range of issues that matter for individual, community and societal well-being. Common examples include:
+                            <ul style="margin-top: 10px;">
+                                <li>Educational attainment</li> 
+                                <li>Life expectancy</li>
+                                <li>Employment and unemployment rates</li>
+                                <li>Environmental Pollution</li>
+                                <li>GDP</li>
+                                <li>Health-Wealth Indicators</li>
+                            </ul>
+                            <b style="font-size: 20px">Data Source</b><br>
+                            All data for this assignment has been taken from “THE WORLD BANK”(https://data.worldbank.org/)<br>
+                            <div style="margin-top: 10px;"></div>
+                            <b style="font-size: 20px">Data Preparation</b><br>
+                            We used python and R libraries to prepare the data for the visualizations<br>
+                            <div style="margin-top: 10px;"></div>
+                            <b style="font-size: 20px">Visualizations</b><br>
+                            We used d3.js javascript library for all the visualizations<br>
+
+                                    
+
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col plot_heading">1. World Population</div>
+                        <div class="col plot_heading">World Population</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                                The figure shows bubbles with size proportional to each country's population ranging from year 2000 to 2018 superimposed on a world map. Bubbles are also colored according to the continent. We can zoom-in to see countries which have very low population and are not visible directly. 
+                        </div>
                     </div>
                     <div class="row">
 						<div class="col">
@@ -85,24 +118,47 @@
                     <div class="row">
                         <div class="col data_heading">Education Statistics</div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="overflow: hidden;">
                         <div class="col plot_heading">1. Literacy Rate</div>
                     </div>
                     <div class="row">
-                        <div class="col" style="margin-top: 20px;"><div id="bodyLiteracy"></div></div>
+                        <div class="col"  style="overflow: hidden;">
+                                This plot shows the literacy rate for different country categories and regions. We have used the good old line plot for visualizing it and we have augmented it with an annotation slider that shows the individual values across these regions for a particular year.     
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-top: 20px;"  style="overflow: hidden;"><div id="bodyLiteracy"></div></div>
                     </div>
                     <script src="./plots/lineplot_literacy.js"></script>
                     <div class="row">
-                        <div class="col plot_heading">2. Adjusted net enrollment rate, primary, female (%) <span class="year"></span> </div>
+                        <br>
+                        <div class="col plot_heading">2. Net enrollment rate, primary, female (%) <span class="year"></span> </div>
                     </div>
                     <div class="row">
-                        <div class="col"><div id="slider-step-en"></div></div>
+                        <div class='col'>
+                            <p>
+                                Net enrollment is the number of pupils of the school-age group for primary education, 
+                                enrolled either in primary or secondary education, expressed as a percentage of the 
+                                total population in that age group. The plot shows the enrollment rate for different 
+                                groups of countries from the year 1970 to 2018. There is a significant rise in the net 
+                                enrollment for females for primary education from 1970 to 2018.
+                            </p> 
+                            <p>
+                                For all the countries in the world, the enrollment rate was around 65% in 1970 which is around 90% in 2018. 
+                                The following groups have more than 95% net enrollment for females for primary education: European Union, OECD members, Europe & Central Asia, High income, East Asia & PacificLatin, America & Caribbean.
+                            </p>
+                        </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="overflow: hidden;">
+                        <div class="col" style="overflow: hidden;"><div id="slider-step-en"></div></div>
+                    </div>
+                    <div class="row" style="overflow: hidden;">
+                        <div class="col" style="overflow: hidden;">
                         <div class="button" id="play_enroll">Play<span class="fa fa-caret-right"></span></div>
                     </div>
-                    <div class="row">
-                        <div class="col" style="margin-top: 20px;"><div class="enrollment-chart"></div></div>
+                    </div>
+                    <div class="row" style="overflow: hidden;">
+                        <div class="col" style="overflow: hidden;" style="margin-top: 20px;"><div class="enrollment-chart" style="overflow: hidden;"></div></div>
                     </div>
                     <script src ="./plots/enrollment.js"></script>
                 </div>
@@ -112,11 +168,33 @@
                         <div class="col data_heading">Environment Statistics</div>
                     </div>
                     <div class="row">
-                        <div class="col plot_heading">1. CO<sub>2</sub> emission, per capita</div>
+                        <div class="col plot_heading">CO<sub>2</sub> emissions per capita vs GDP per capita vs Total CO<sub>2</sub> emissions</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                The plot shows the effect of GDP on CO2 emissions(metric tons per capita) in log scale 
+                                across all countries from the year 1980 to 2014. Gross Domestic Product (GDP) is the 
+                                monetary value of all finished goods and services made within a country during a 
+                                specific period. GDP provides an economic snapshot of a country, used to estimate the 
+                                size of an economy and growth rate.
+                            </p>
+                            <p> 
+                                Carbon dioxide emissions, largely by-products of energy production and use, account 
+                                for the largest share of greenhouse gases, which are associated with global warming and 
+                                climate change. Qatar, Kuwait, UAE and the US are among the top countries for co2 emission.
+                            </p> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                                <div id = "steps-slider"></div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col" style = "overflow: hidden;">
-                            <div id = "steps-slider"></div>
                             <div id="content"> 
                                 <div id="block"></div>                         
                                 <div id="buttons">
@@ -138,6 +216,20 @@
                         <div class="col plot_heading">1. Gross Domestic Product</div>
                     </div>
                     <div class="row">
+                        <div class="col">
+                            <p>
+                                Gross Domestic Product (GDP) is the monetary value of all finished goods and services 
+                                made within a country during a specific period. GDP provides an economic snapshot of a 
+                                country, used to estimate the size of an economy and growth rate. 
+                            </p>
+                            <p>
+                                We have used the cartogram plot to visualize the GDP of each country where the GDP 
+                                value is substituted for the land area. We have provided a slider on top which allows 
+                                us to change the plot to show data for that year.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col"><div id="slider-step-gdp"></div></div>
                     </div>
                     <div class="row">
@@ -146,7 +238,19 @@
                     <script src="./plots/cartogram_gdp.js"></script>
 
                     <div class="row">
-                        <div class="col plot_heading">2. Employment Scenarios - Female Population</div>
+                        <div class="col plot_heading">2. Employment categories - Female</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Here we represent two types of employment categories among the female population</p>
+                            <ul>
+                                <li>Salaried - Fixed Compensation</li>
+                                <li>Vulnerable - No formal work arrangements</li>
+                            </ul>    
+                            <p>
+                                We represent these values as % of the total female population, we have left out the remaining part of unemployed females. We plot these values using the radar plot because we wanted to compare such type of employment across different categories of people and regions. Different categories and regions are represented along different dimensions.
+                            </p>   
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col"><div id="slider-step-radar"></div></div>
@@ -163,7 +267,23 @@
                     </div>
                     <div class="row">
                         <div class="col plot_heading">
-                            1. Health-Wealth-population
+                            1. Health & Wealth of Nations
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                This plot shows the relationship between life expectancy(years) and Adjusted net national 
+                                income(current US$) of all the countries using bubble chart where the size of the bubble 
+                                shows the population of the country.
+                            </p> 
+                            <p>
+                                Life expectancy is defined as how long, on average, a newborn can expect to live. 
+                                Adjusted net national income(current US$) is Gross National Income (GNI) minus consumption 
+                                of fixed capital and natural resources depletion.
+                                The plot shows an increase in life expectancy as the income is increasing. The most life 
+                                expectancy is in Japan.
+                            </p>
                         </div>
                     </div>
                     <div class="row">
@@ -173,6 +293,19 @@
 
                     <div class="row">
                         <div class="col plot_heading">2. Age Dependency Ratio</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                This is actually not a social development indicator but we kept it for viewing the 
+                                visualization of joy/ridge plot.
+                            </p>
+                            <p> 
+                                Dependency Ratio represents the number of dependents in a population divided by the 
+                                number of working-age people. Dependents are defined as those aged 0 to 14 and those 
+                                aged 65 and older. Working-age is from 15 to 64. We used the joy plot to visualize it. It shows the distribution of a numeric value for several groups. The example clearly shows that the dependency ratio is increasing for countries like Japan and China. 
+                            </p>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col" style="text-align: center;">

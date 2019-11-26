@@ -2,9 +2,9 @@
 
 function co2emission() {
 
-
+d3.csv("./data/co2_gdp.csv", function(error, data) {	
 	years = []
-	for(var i = 1980;i <= 2014;i++) {
+	 for(var i = 1980;i <= 2014;i++) {
 	  years.push(i);
 	}
 	
@@ -17,8 +17,6 @@ function co2emission() {
 	.tickFormat(d3.format('d'))
 	.step(1)
 	.on('onchange', val => {
-	  //console.log(val);
-	  //d3.select('p#value-step').text((val));
 	update(val);
 	});
 	
@@ -34,15 +32,10 @@ function co2emission() {
 	
 	update(1980);
 
-
-function update(val) {
-
-d3.csv("./data/co2_gdp.csv", function(error, data) {
-
+	function update(val) {
+	
 	d3.select('#co2emission').html("");
-	d3.select('#slider').html("");
-	
-	
+
 d3.select("#play").on("click", function(){
 	setup();
 });
@@ -96,7 +89,7 @@ function updateKnob() {
 
 
 
-	var margin = {top: 35, right: 45, bottom: 40, left: 25},
+	var margin = {top: 35, right: 95, bottom: 40, left: 25},
     width = document.body.clientWidth - margin.left - margin.right,
     height = 460 - margin.top - margin.bottom;
 
@@ -280,25 +273,6 @@ var timerCircle = slidersvg.append("circle")
 
 
 
-		// d3.selectAll("#countrybuttons .button").on("click", function(){
-
-		// 	selectedClass = d3.select(this).attr("id");
-
-		// 	if (d3.select(this).classed("selected")) {
-		// 		d3.select(this).classed("selected", false);
-
-		// 		d3.selectAll("." + selectedClass)
-		// 			.style("opacity", 0)
-		// 			.style("display", "none");
-		// 	} else {
-		// 		d3.select(this).classed("selected", true);
-		// 		d3.selectAll("." + selectedClass)
-		// 			.style("opacity", 0.6)
-		// 			.style("display", "inline");
-		// 	}
-
-		// });
-
 
 
 		function updateScatter() {
@@ -359,13 +333,13 @@ var timerCircle = slidersvg.append("circle")
 		
 	
 
-});
+};
 
 
 
 d3.select(self.frameElement).style("height", "625px");
 
-	}
+	})
 
 
 }

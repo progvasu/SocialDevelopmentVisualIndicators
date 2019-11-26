@@ -64,7 +64,7 @@ svg.append("text")
     .attr("text-anchor", "end")
     .attr("x", width)
     .attr("y", height - 6)
-    .text("Adjusted net national income per capita (current US$)");
+    .text("Net national income(current US$)");
 
 // Add a y-axis label1.
 svg.append("text")
@@ -73,7 +73,7 @@ svg.append("text")
     .attr("y", 6)
     .attr("dy", ".75em")
     .attr("transform", "rotate(-90)")
-    .text("Life expectancy at birth, total (years)");
+    .text("Life expectancy(years)");
 
 // Add the year label1; the value is set on transition.
 var label1 = svg.append("text")
